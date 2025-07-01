@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatimah Emad Eldin | Graphic Design Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base Variables */
+        :root {
+            --light-bg: #f9fafb;
+            --light-text: #374151;
+            --light-heading: #111827;
+            --light-border: #e5e7eb;
+            --light-link: #2563eb;
+            --light-card-bg: #ffffff;
+            --light-skill-bg: #e0e7ff;
+            --light-skill-text: #3730a3;
+            
+            --dark-bg: #0B1120;
+            --dark-text: #9ca3af;
+            --dark-heading: #ffffff;
+            --dark-border: #374151;
+            --dark-link: #60a5fa;
+            --dark-card-bg: #1f2937;
+            --dark-skill-bg: #374151;
+            --dark-skill-text: #e5e7eb;
+
+            --accent-color: #38bdf8;
+            --accent-color-secondary: #818cf8;
+        }
+
+        /* Theme Styles */
+        html[data-theme='light'] {
+            --bg-color: var(--light-bg);
+            --text-color: var(--light-text);
+            --heading-color: var(--light-heading);
+            --border-color: var(--light-border);
+            --link-color: var(--light-link);
+            --card-bg: var(--light-card-bg);
+            --skill-bg: var(--light-skill-bg);
+            --skill-text: var(--light-skill-text);
+        }
+        html[data-theme='dark'] {
+            --bg-color: var(--dark-bg);
+            --text-color: var(--dark-text);
+            --heading-color: var(--dark-heading);
+            --border-color: var(--dark-border);
+            --link-color: var(--dark-link);
+            --card-bg: var(--dark-card-bg);
+            --skill-bg: var(--dark-skill-bg);
+            --skill-text: var(--dark-skill-text);
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* Navigation & Controls */
+        .nav-controls {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .control-btn svg { width: 1.25rem; height: 1.25rem; }
+
+        /* Landing Page Hero Section */
+        #home {
+            min-height: 100vh;
+            background-color: var(--dark-bg); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
+        }
+        #home::before {
+            content: ''; position: absolute; inset: 0;
+            background-image:
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 25px 25px; opacity: 0.5;
+        }
+        .hero-content {
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center; gap: 1.5rem; position: relative; z-index: 10; padding: 1rem;
+        }
+        .hero-greeting {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem; border-radius: 9999px; backdrop-filter: blur(10px);
+            font-size: 1rem;
+        }
+        .hero-greeting span {
+            background: linear-gradient(to right, var(--accent-color), var(--accent-color-secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600;
+        }
+        .hero-title {
+            font-family: 'Cairo', sans-serif; font-size: 2.5rem;
+            font-weight: 700; letter-spacing: -0.02em; color: #fff;
+        }
+        .animated-headline {
+            display: block; position: relative;
+            min-height: 1.2em; margin-bottom: 0.5rem;
+            width: 100vw;
+        }
+        .animated-headline span {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            white-space: nowrap;
+            opacity: 0;
+            animation: fadeWords 9s infinite;
+            background: linear-gradient(to right, var(--accent-color), var(--accent-color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .animated-headline span:nth-child(1) { animation-delay: 0s; }
+        .animated-headline span:nth-child(2) { animation-delay: 3s; }
+        .animated-headline span:nth-child(3) { animation-delay: 6s; }
+        @keyframes fadeWords {
+            0%, 33.33%, 100% { opacity: 0; transform: translateY(10px); }
+            3%, 30.33% { opacity: 1; transform: translateY(0); }
+        }
+        .hero-description { max-width: 600px; color: #d1d5db; font-size: 1.125rem; }
+        .hero-cta-btn {
+            background: linear-gradient(to right, var(--accent-color), var(--accent-color-secondary)); color: var(--dark-bg);
+            padding: 0.75rem 2rem; border-radius: 9999px; font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+        .hero-cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2); }
+        
+        /* About Section */
+        #about {
+            padding: 4rem 1rem;
+            background-color: var(--card-bg);
+        }
+        .about-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+        .about-tab {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .about-tab:hover {
+            color: var(--link-color);
+            background-color: var(--skill-bg);
+        }
+        .about-tab.active {
+            color: var(--link-color);
+            background-color: var(--skill-bg);
+            border-color: var(--link-color);
+        }
+        .about-content {
+            display: none;
+        }
+        .about-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .timeline {
+            max-width: 800px;
+            margin: auto;
+            position: relative;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 15px;
+        }
+        html[dir="rtl"] .timeline::after {
+            left: auto;
+            right: 15px;
+        }
+        .timeline-item {
+            padding: 1rem 2.5rem;
+            position: relative;
+            background-color: inherit;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--accent-color);
+            top: 1.5rem;
+            border-radius: 50%;
+            z-index: 1;
+            left: 8px;
+        }
+        html[dir="rtl"] .timeline-item::after {
+            left: auto;
+            right: 8px;
+        }
+        .timeline-content-wrapper {
+            padding: 1.5rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+        }
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 0.25rem;
+        }
+        .timeline-meta {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .timeline-duties {
+            list-style-position: inside;
+            list-style-type: disc;
+            padding-left: 0;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        /* Skills & Tools Section */
+        .skill-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        .skill-card img {
+            height: 48px;
+            width: 48px;
+        }
+        html[data-theme='dark'] .skill-card img {
+            filter: invert(0.8);
+        }
+        .skill-card span {
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+        
+        /* Portfolio Section Styles */
+        #portfolio {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 4rem 1rem;
+        }
+        .page-header {
+            color: var(--heading-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .project-name { font-size: 2.5rem; margin-top: 0; margin-bottom: 0.5rem; font-weight: 700; }
+        .project-tagline { font-size: 1.25rem; margin-bottom: 2rem; font-weight: 400; color: var(--text-color); }
+        .btn-container { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; margin-bottom: 3rem; }
+        .btn { display: inline-block; background-color: transparent; color: var(--text-color); padding: 0.6rem 1.5rem; border-radius: 9999px; text-decoration: none; transition: all 0.2s; border: 1px solid transparent; cursor: pointer; font-weight: 600; }
+        .btn:hover { color: var(--link-color); background-color: var(--skill-bg); }
+        .btn.active { color: var(--link-color); background-color: var(--skill-bg); border-color: var(--link-color); }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .tab-content { display: none; }
+        .tab-content.active-content { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .projects-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .project-card { border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); background-color: var(--card-bg); display: flex; flex-direction: column; transition: all 0.3s; overflow: hidden; }
+        .project-card:hover { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); transform: translateY(-5px); }
+        
+        .project-image-link { display: block; cursor: zoom-in; }
+        .project-image-link img { width: 100%; height: 220px; object-fit: cover; background-color: #e0e0e0; transition: transform 0.3s ease; }
+        .project-image-link:hover img { transform: scale(1.05); }
+        
+        .project-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-title { font-size: 1.25rem; margin: 0 0 10px 0; color: var(--heading-color); font-weight: 700; }
+        .project-card p { font-size: 0.95rem; color: var(--text-color); line-height: 1.6; flex-grow: 1; margin-bottom: 1rem; }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            animation: fadeInLightbox 0.3s ease;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox-content { max-width: 90%; max-height: 85%; animation: zoomIn 0.3s ease; }
+        @keyframes zoomIn { from { transform: scale(0.8); } to { transform: scale(1); } }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .lightbox-close:hover { color: #bbb; }
+
+        /* Footer Styles */
+        .site-footer { padding: 4rem 2rem; background-color: #0f172a; color: #9ca3af; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .footer-bottom p { margin: 0; }
+
+        @media screen and (min-width: 640px) { .hero-title { font-size: 3.75rem; } }
+        html[dir="rtl"] .nav-controls { left: 1rem; right: auto; }
+        html[dir="rtl"] .lightbox-close { left: 35px; right: auto; }
+        html[dir="rtl"] body { text-align: right; }
+        html[dir="rtl"] .animated-headline span { animation: fadeWordsRTL 9s infinite; }
+        @keyframes fadeWordsRTL {
+            0%, 33.33%, 100% { opacity: 0; transform: translateY(10px); }
+            3%, 30.33% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body data-lang="ar">
+    <!-- Landing Page Section -->
+    <section id="home">
+        <div class="nav-controls">
+            <button id="theme-toggle" class="control-btn" aria-label="Toggle theme">
+                <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button id="lang-toggle" class="control-btn" aria-label="Toggle language">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </button>
+        </div>
+        <div class="hero-content">
+            <div class="hero-greeting" data-translate-key="hero.greeting">أهلاً، أنا <span>فاطمة عماد الدين</span></div>
+            <h1 class="hero-title">
+                <div class="animated-headline">
+                    <span data-translate-key="hero.animated.design">تصميم جرافيك</span>
+                    <span data-translate-key="hero.animated.ux">تجربة المستخدم</span>
+                    <span data-translate-key="hero.animated.writing">كتابة إبداعية</span>
+                </div>
+                <div data-translate-key="hero.portfolio">ملف الأعمال</div>
+            </h1>
+            <p class="hero-description" data-translate-key="hero.description">
+                مصممة شغوفة متخصصة في تحويل الأفكار إلى تجارب بصرية مؤثرة وجذابة، مع التركيز على التصميم الجرافيكي، تجربة المستخدم، والهويات البصرية.
+            </p>
+            <div>
+                <a href="#portfolio" class="hero-cta-btn" data-translate-key="hero.cta">تصفح أعمالي</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="about-tabs">
+                <button class="about-tab active" data-tab="experience" data-translate-key="nav.experience">الخبرة</button>
+                <button class="about-tab" data-tab="education" data-translate-key="nav.education">التعليم</button>
+                <button class="about-tab" data-tab="skills" data-translate-key="nav.skills">المهارات</button>
+                <button class="about-tab" data-tab="certifications" data-translate-key="nav.certifications">الشهادات</button>
+                <button class="about-tab" data-tab="awards" data-translate-key="nav.awards">الجوائز</button>
+            </div>
+
+            <!-- Experience Content -->
+            <div id="experience" class="about-content active">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="exp.sunaa.title">مصمم جرافيك متدرب</h3>
+                            <p class="timeline-meta" data-translate-key="exp.sunaa.meta">شركة صناع الواقع | فبراير 2025 - يونيو 2025</p>
+                            <ul class="timeline-duties">
+                                <li data-translate-key="exp.sunaa.d1">تصميم ملف تعريفي متكامل للشركة.</li>
+                                <li data-translate-key="exp.sunaa.d2">تطوير الهوية البصرية الكاملة لحملة عيد الفطر.</li>
+                                <li data-translate-key="exp.sunaa.d3">تنفيذ الحملة الإعلامية لمعسكر "سرّع" الرقمي.</li>
+                                <li data-translate-key="exp.sunaa.d4">إعادة تصميم عرض تقديمي لمعسكر "فوانيس" الرمضاني.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="exp.yomun.title">رئيس وحدة الإعلام</h3>
+                            <p class="timeline-meta" data-translate-key="exp.yomun.meta">يمُن | أغسطس 2023 - الآن</p>
+                            <ul class="timeline-duties">
+                                <li data-translate-key="exp.yomun.d1">تطوير والحفاظ على إرشادات الهوية البصرية.</li>
+                                <li data-translate-key="exp.yomun.d2">إجراء أبحاث السوق والتحليل التنافسي.</li>
+                                <li data-translate-key="exp.yomun.d3">التعاون مع فريق التصميم لإنشاء عناصر بصرية متماسكة.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="exp.kfu.title">مصمم جرافيك وتجربة مستخدم</h3>
+                            <p class="timeline-meta" data-translate-key="exp.kfu.meta">نادي هواوي للطلبة المطورين - جامعة الملك فيصل | أكتوبر 2022 - أكتوبر 2023</p>
+                            <ul class="timeline-duties">
+                                <li data-translate-key="exp.kfu.d1">تصميم دعوات ورش عمل ثنائية اللغة.</li>
+                                <li data-translate-key="exp.kfu.d2">إنشاء تقارير انفوجرافيك سنوية شاملة.</li>
+                                <li data-translate-key="exp.kfu.d3">تطوير وأتمتة نظام تصميم الشهادات.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="exp.yakeen.title">متدرب تسويق رقمي ومصمم تجربة مستخدم</h3>
+                            <p class="timeline-meta" data-translate-key="exp.yakeen.meta">يقين لتقنية المعلومات | فبراير 2022 - مايو 2022</p>
+                            <ul class="timeline-duties">
+                                <li data-translate-key="exp.yakeen.d1">إعادة تعريف استراتيجية وخدمات التسويق.</li>
+                                <li data-translate-key="exp.yakeen.d2">إعادة تصميم واجهة المستخدم وصياغة محتوى تجربة المستخدم.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="exp.mars.title">استراتيجي محتوى، مصمم، ومترجم</h3>
+                            <p class="timeline-meta" data-translate-key="exp.mars.meta">نادي المريخ العربي لعلوم الفضاء والفلك | يناير 2020 - يونيو 2023</p>
+                            <ul class="timeline-duties">
+                                <li data-translate-key="exp.mars.d1">إنشاء وإدارة استراتيجية المحتوى مما أدى إلى نمو المتابعين بنسبة 40%.</li>
+                                <li data-translate-key="exp.mars.d2">ترجمة أكثر من 50 مقالًا تقنيًا من الإنجليزية إلى العربية.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Content -->
+            <div id="education" class="about-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="edu.master.title">ماجستير في هندسة البرمجيات</h3>
+                            <p class="timeline-meta" data-translate-key="edu.master.meta">جامعة القاهرة، مصر | سبتمبر 2024 - حالي</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="edu.bsc.title">بكالوريوس في تقنية المعلومات والحوسبة (علوم الحاسب)</h3>
+                            <p class="timeline-meta" data-translate-key="edu.bsc.meta">الجامعة العربية المفتوحة، السعودية | سبتمبر 2019 - يوليو 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Content -->
+            <div id="skills" class="about-content">
+                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
+                    <div class="skill-card">
+                        <img src="https://cdn.simpleicons.org/canva" alt="Canva Icon">
+                        <span>Canva</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://cdn.simpleicons.org/adobephotoshop" alt="Photoshop Icon">
+                        <span>Photoshop</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://cdn.simpleicons.org/figma" alt="Figma Icon">
+                        <span>Figma</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://cdn.simpleicons.org/adobeillustrator" alt="Illustrator Icon">
+                        <span>Illustrator</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications Content -->
+            <div id="certifications" class="about-content">
+                 <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="cert.pmp.title">شهادة محترف إدارة المشاريع (PMP)</h3>
+                            <p class="timeline-meta" data-translate-key="cert.pmp.meta">Google | 2024</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="cert.ux.title">شهادة جوجل الاحترافية في تصميم تجربة المستخدم</h3>
+                            <p class="timeline-meta" data-translate-key="cert.ux.meta">Google | 2022</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="cert.gd.title">ماستركلاس التصميم الجرافيكي</h3>
+                            <p class="timeline-meta" data-translate-key="cert.gd.meta">Udemy | 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Awards Content -->
+            <div id="awards" class="about-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="award.itc.title">تكريم من وزير الاتصالات وتكنولوجيا المعلومات المصري</h3>
+                            <p class="timeline-meta" data-translate-key="award.itc.meta">لإنجازاتها المتميزة في تدريب DEPI | 2024</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="award.aou.title">تكريم من الجامعة العربية المفتوحة</h3>
+                            <p class="timeline-meta" data-translate-key="award.aou.meta">في حفل قصص نجاح الخريجين | 2024</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content-wrapper">
+                            <h3 class="timeline-title" data-translate-key="award.misraj.title">المركز الأول في هاكاثون التعليم العالي من شركة مسراج لتقنية المعلومات </h3>
+                            <p class="timeline-meta" data-translate-key="award.misraj.meta">جائزة بقيمة 2500 دولار | 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Portfolio Section -->
+    <section id="portfolio">
+        <header class="page-header">
+            <h1 class="project-name" data-translate-key="portfolio.name">المشاريع</h1>
+            <h2 class="project-tagline" data-translate-key="portfolio.tagline">تصميم جرافيك | تجربة مستخدم | هويات بصرية</h2>
+        </header>
+        <main class="main-content">
+             <div class="btn-container">
+                <a href="#" class="btn tab-link active" data-tab="infographics" data-translate-key="nav.infographics">انفوجرافيك</a>
+                <a href="#" class="btn tab-link" data-tab="invitations" data-translate-key="nav.invitations">دعوات</a>
+                <a href="#" class="btn tab-link" data-tab="ui-ux" data-translate-key="nav.ui_ux">واجهات وتجربة مستخدم</a>
+                <a href="#" class="btn tab-link" data-tab="presentations" data-translate-key="nav.presentations">عروض تقديمية</a>
+                <a href="#" class="btn tab-link" data-tab="visual-identity" data-translate-key="nav.visual_identity">هويات بصرية</a>
+            </div>
+            
+            <!-- Infographics Section -->
+            <section id="infographics" class="tab-content active-content">
+                <div class="projects-container">
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/0B1120/38bdf8?text=Huawei+Club" class="project-image-link">
+                           <img src="https://placehold.co/600x400/0B1120/38bdf8?text=Huawei+Club" alt="Huawei Club Infographic">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="infographics.huawei.title">حصاد نادي هواوي للمطورين</h3>
+                            <p data-translate-key="infographics.huawei.desc">انفوجرافيك يلخص إنجازات وأرقام نادي هواوي للطلبة المطورين في جامعة الملك فيصل، مسلطًا الضوء على النمو والفعاليات والتفاعل المجتمعي.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/0B1120/38bdf8?text=Oil+Exploration" class="project-image-link">
+                            <img src="https://placehold.co/600x400/0B1120/38bdf8?text=Oil+Exploration" alt="Oil Exploration Infographic">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="infographics.oil.title">رحلة قطرة نفط</h3>
+                            <p data-translate-key="infographics.oil.desc">تصميم بصري يروي قصة النفط من التكوين الجيولوجي إلى مراحل الاستكشاف والإنتاج، مع التركيز على تاريخه في المملكة العربية السعودية.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                         <a href="https://placehold.co/1200x800/0B1120/38bdf8?text=Axiom+Mission" class="project-image-link">
+                            <img src="https://placehold.co/600x400/0B1120/38bdf8?text=Axiom+Mission" alt="Axiom Mission 2 Infographic">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="infographics.axiom.title">مهمة الفضاء السعودية Ax-2</h3>
+                            <p data-translate-key="infographics.axiom.desc">انفوجرافيك يوضح تفاصيل المهمة الفضائية السعودية الأولى إلى محطة الفضاء الدولية، بما في ذلك الطاقم، الأهداف، وتفاصيل الإطلاق.</p>
+                        </div>
+                    </div>
+                     <div class="project-card">
+                         <a href="https://placehold.co/1200x800/0B1120/38bdf8?text=Summer+Solstice" class="project-image-link">
+                            <img src="https://placehold.co/600x400/0B1120/38bdf8?text=Summer+Solstice" alt="Summer Solstice Infographic">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="infographics.solstice.title">الانقلاب الصيفي</h3>
+                            <p data-translate-key="infographics.solstice.desc">تصميم مبسط يشرح ظاهرة الانقلاب الصيفي، أسبابها، وتأثيرها على طول النهار، مقدم من نادي الفلك العربي.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Invitations Section -->
+            <section id="invitations" class="tab-content">
+                 <div class="projects-container">
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/1f2937/818cf8?text=AOU+Events" class="project-image-link">
+                            <img src="https://placehold.co/600x400/1f2937/818cf8?text=AOU+Events" alt="AOU Events">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="invitations.aou.title">دعوات فعاليات الجامعة العربية المفتوحة</h3>
+                            <p data-translate-key="invitations.aou.desc">مجموعة من تصاميم الدعوات لورش عمل وفعاليات متنوعة في الجامعة العربية المفتوحة، مثل "طريق نحو البرمجة" و "أساسيات العود".</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/1f2937/818cf8?text=HSD+Workshop" class="project-image-link">
+                            <img src="https://placehold.co/600x400/1f2937/818cf8?text=HSD+Workshop" alt="HSD Workshop">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="invitations.hsd.title">ورشة عمل تطوير تطبيقات أندرويد</h3>
+                            <p data-translate-key="invitations.hsd.desc">تصميم دعوة لورشة عمل متخصصة في تطوير تطبيقات أندرويد باستخدام Kotlin، مقدمة من نادي هواوي للطلبة المطورين.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/1f2937/818cf8?text=Content+Creation+Forum" class="project-image-link">
+                            <img src="https://placehold.co/600x400/1f2937/818cf8?text=Content+Creation+Forum" alt="Content Creation Forum">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="invitations.content.title">ملتقى صناعة المحتوى</h3>
+                            <p data-translate-key="invitations.content.desc">تصاميم إعلانية لملتقى صناعة المحتوى الذي يستضيف صناع محتوى بارزين في مجالات التصوير والكتابة الإبداعية.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- UI/UX Section -->
+            <section id="ui-ux" class="tab-content">
+                <div class="projects-container">
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/0B1120/60a5fa?text=Vision+2030" class="project-image-link">
+                            <img src="https://placehold.co/600x400/0B1120/60a5fa?text=Vision+2030" alt="Vision 2030 Website UI">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="uiux.vision2030.title">واجهة موقع مشاريع رؤية 2030</h3>
+                            <p data-translate-key="uiux.vision2030.desc">تصميم واجهة مستخدم لموقع إلكتروني يعرض مشاريع رؤية المملكة 2030، مع التركيز على هوية اليوم الوطني وسهولة التصفح.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/0B1120/60a5fa?text=Smart+Pot" class="project-image-link">
+                            <img src="https://placehold.co/600x400/0B1120/60a5fa?text=Smart+Pot" alt="Smart Pot App UI">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="uiux.smartpot.title">تطبيق الحوض الذكي للزراعة</h3>
+                            <p data-translate-key="uiux.smartpot.desc">تصميم واجهة تطبيق لمراقبة والتحكم في أحواض الزراعة الذكية، يعرض مؤشرات حيوية مثل الرطوبة والحرارة وكمية المياه.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/0B1120/60a5fa?text=Physiotherapy+App" class="project-image-link">
+                            <img src="https://placehold.co/600x400/0B1120/60a5fa?text=Physiotherapy+App" alt="Physiotherapy App UI">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="uiux.physio.title">تطبيق "فقراتي" للعلاج الطبيعي</h3>
+                            <p data-translate-key="uiux.physio.desc">تصميم تجربة مستخدم وواجهة لتطبيق يربط بين أخصائيي العلاج الطبيعي والمرضى، مع ميزات لتحليل التقدم وتخصيص التمارين.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Presentations Section -->
+            <section id="presentations" class="tab-content">
+                <div class="projects-container">
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/1f2937/38bdf8?text=Motorsport+Co." class="project-image-link">
+                            <img src="https://placehold.co/600x400/1f2937/38bdf8?text=Motorsport+Co." alt="Saudi Motorsport Company Presentation">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="presentations.motorsport.title">عرض تقديمي لشركة رياضة السيارات السعودية</h3>
+                            <p data-translate-key="presentations.motorsport.desc">تصميم عرض تقديمي احترافي يعرض خدمات الشركة، الشراكات، ومؤشرات الأداء الرئيسية لفعاليات الفورمولا 1.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/1f2937/38bdf8?text=Corporate+Transformation" class="project-image-link">
+                            <img src="https://placehold.co/600x400/1f2937/38bdf8?text=Corporate+Transformation" alt="Corporate Transformation Presentation">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="presentations.transformation.title">رحلة التحول المؤسسي</h3>
+                            <p data-translate-key="presentations.transformation.desc">تصميم عرض يوضح رحلة ومخرجات التحول المؤسسي لشركة الماجدية ريزدنس، مع التركيز على التحديات والمبادرات والإنجازات.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/1f2937/38bdf8?text=NEO+Pitch+Deck" class="project-image-link">
+                            <img src="https://placehold.co/600x400/1f2937/38bdf8?text=NEO+Pitch+Deck" alt="NEO Pitch Deck">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="presentations.neo.title">عرض تقديمي لمنصة NEO</h3>
+                            <p data-translate-key="presentations.neo.desc">Pitch Deck لمنصة تمويل جماعي وقفي للبحث والابتكار، يوضح المشكلة، حجم السوق، وخارطة طريق المشروع.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visual Identity Section -->
+            <section id="visual-identity" class="tab-content">
+                 <div class="projects-container">
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/0B1120/818cf8?text=Eid+Al-Fitr" class="project-image-link">
+                           <img src="https://placehold.co/600x400/0B1120/818cf8?text=Eid+Al-Fitr" alt="Eid Al-Fitr Campaign Identity">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="visual_identity.eid.title">دليل الهوية البصرية لحملة عيد الفطر</h3>
+                            <p data-translate-key="visual_identity.eid.desc">دليل متكامل للهوية البصرية لحملة عيد الفطر، يشمل الشعار، الألوان، الخطوط، والعناصر البصرية المستوحاة من النقوش التراثية.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/0B1120/818cf8?text=Riyadh+Restaurants" class="project-image-link">
+                           <img src="https://placehold.co/600x400/0B1120/818cf8?text=Riyadh+Restaurants" alt="Riyadh Restaurants Identity">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="visual_identity.riyadh.title">هوية بصرية لمطاعم الرياض</h3>
+                            <p data-translate-key="visual_identity.riyadh.desc">تصميم هوية بصرية لحملة ترويجية لمطاعم في الرياض، تتضمن شعارًا وأنماطًا مستوحاة من التراث النجدي بألوان عصرية.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://placehold.co/1200x800/0B1120/818cf8?text=Thesis+Platform" class="project-image-link">
+                           <img src="https://placehold.co/600x400/0B1120/818cf8?text=Thesis+Platform" alt="Thesis Platform Identity">
+                        </a>
+                        <div class="project-info">
+                            <h3 class="project-title" data-translate-key="visual_identity.thesis.title">هوية بصرية لمنصة "أطروحة"</h3>
+                            <p data-translate-key="visual_identity.thesis.desc">تطوير الهوية البصرية لمنصة "أطروحة"، مع تصميم شعار مرن يتناسب مع مختلف المواضيع التي تغطيها المنصة.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-content" class="lightbox-content" src="" alt="Expanded Project Image">
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year">2024</span> <span data-translate-key="footer.name">فاطمة عماد الدين</span>. <span data-translate-key="footer.rights">جميع الحقوق محفوظة.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- TRANSLATION LOGIC ---
+            const translations = {
+                en: {
+                    "hero.greeting": "Hello, I'm <span>Fatimah Emad Eldin</span>",
+                    "hero.animated.design": "Graphic Design",
+                    "hero.animated.ux": "User Experience",
+                    "hero.animated.writing": "Creative Writing",
+                    "hero.portfolio": "Portfolio",
+                    "hero.description": "A passionate designer specializing in turning ideas into impactful and engaging visual experiences, focusing on graphic design, user experience, and visual identities.",
+                    "hero.cta": "View My Work",
+                    "nav.experience": "Experience",
+                    "nav.education": "Education",
+                    "nav.skills": "Skills",
+                    "nav.certifications": "Certifications",
+                    "nav.awards": "Awards",
+                    "exp.sunaa.title": "Graphic Designer Intern",
+                    "exp.sunaa.meta": "Suna'a Waqa | Feb 2025 - June 2025",
+                    "exp.sunaa.d1": "Designed a comprehensive company profile.",
+                    "exp.sunaa.d2": "Developed the complete visual identity for the Eid al-Fitr campaign.",
+                    "exp.sunaa.d3": "Executed the media campaign for the 'Sare'e' bootcamp.",
+                    "exp.sunaa.d4": "Redesigned a presentation for the 'Fawanees' Ramadan bootcamp.",
+                    "exp.yomun.title": "Head Of Media Unit",
+                    "exp.yomun.meta": "Yomun | Aug 2023 - Current",
+                    "exp.yomun.d1": "Developed and maintained visual identity guidelines.",
+                    "exp.yomun.d2": "Conducted in-depth market research and competitive analysis.",
+                    "exp.yomun.d3": "Collaborated with design team to create cohesive visual elements.",
+                    "exp.kfu.title": "Graphic and UX Designer",
+                    "exp.kfu.meta": "KFU Huawei Developer Student Club | Oct 2022 - Oct 2023",
+                    "exp.kfu.d1": "Designed bilingual workshop invitations.",
+                    "exp.kfu.d2": "Created comprehensive infographic annual reports.",
+                    "exp.kfu.d3": "Developed and automated certificate design system.",
+                    "exp.yakeen.title": "Digital Marketing & UX Designer Intern",
+                    "exp.yakeen.meta": "Yakeen for Information Technology | Feb 2022 - May 2022",
+                    "exp.yakeen.d1": "Redefined marketing strategy and services.",
+                    "exp.yakeen.d2": "Redesigned the UI and formulated the UX content.",
+                    "exp.mars.title": "Content Strategist, Designer, and Translator",
+                    "exp.mars.meta": "Arab Mars Club | Jan 2020 - June 2023",
+                    "exp.mars.d1": "Managed content strategy resulting in 40% follower growth.",
+                    "exp.mars.d2": "Translated 50+ technical articles from English to Arabic.",
+                    "edu.master.title": "Master of Engineering in Software Engineering",
+                    "edu.master.meta": "Cairo University, Egypt | Sep 2024 - Current",
+                    "edu.bsc.title": "BSc in Information Technology and Computing (CS)",
+                    "edu.bsc.meta": "Arab Open University, Saudi Arabia | Sep 2019 - Jul 2023",
+                    "cert.pmp.title": "Project Management Professional (PMP) Certificate",
+                    "cert.pmp.meta": "Google | 2024",
+                    "cert.ux.title": "Google UX Design Professional Certificate",
+                    "cert.ux.meta": "Google | 2022",
+                    "cert.gd.title": "Graphic Design Masterclass",
+                    "cert.gd.meta": "Udemy | 2020",
+                    "award.itc.title": "Honored by Egyptian Minister of ITC",
+                    "award.itc.meta": "For high achievements in DEPI training | 2024",
+                    "award.aou.title": "Recognized By Arab Open University",
+                    "award.aou.meta": "At an alumni success stories event | 2024",
+                    "award.misraj.title": "1st place in Misraj Tech Higher Education Hackathon",
+                    "award.misraj.meta": "$2500 prize | 2024",
+                    "portfolio.name": "Projects",
+                    "portfolio.tagline": "Graphic Design | UI/UX | Visual Identities",
+                    "nav.infographics": "Infographics",
+                    "nav.invitations": "Invitations",
+                    "nav.ui_ux": "UI/UX",
+                    "nav.presentations": "Presentations",
+                    "nav.visual_identity": "Visual Identity",
+                    "infographics.huawei.title": "Huawei Developers Club Report",
+                    "infographics.huawei.desc": "An infographic summarizing the achievements and statistics of the Huawei Student Developers Club at King Faisal University, highlighting growth, events, and community engagement.",
+                    "infographics.oil.title": "Journey of an Oil Drop",
+                    "infographics.oil.desc": "A visual design telling the story of oil from geological formation to exploration and production, focusing on its history in Saudi Arabia.",
+                    "infographics.axiom.title": "Saudi Space Mission Ax-2",
+                    "infographics.axiom.desc": "An infographic detailing the first Saudi space mission to the ISS, including the crew, objectives, and launch details.",
+                    "infographics.solstice.title": "The Summer Solstice",
+                    "infographics.solstice.desc": "A simplified design explaining the summer solstice phenomenon, its causes, and its effect on daylight hours, presented by the Arab Astronomy Club.",
+                    "invitations.aou.title": "Arab Open University Event Invitations",
+                    "invitations.aou.desc": "A collection of invitation designs for various workshops and events at the Arab Open University, such as 'A Path to Programming' and 'Oud Basics'.",
+                    "invitations.hsd.title": "Android App Development Workshop",
+                    "invitations.hsd.desc": "Invitation design for a specialized workshop on Android app development using Kotlin, presented by the Huawei Student Developers Club.",
+                    "invitations.content.title": "Content Creation Forum",
+                    "invitations.content.desc": "Promotional designs for a content creation forum hosting prominent content creators in photography and creative writing.",
+                    "uiux.vision2030.title": "Vision 2030 Projects Website UI",
+                    "uiux.vision2030.desc": "User interface design for a website showcasing Saudi Vision 2030 projects, with a focus on the National Day identity and ease of navigation.",
+                    "uiux.smartpot.title": "Smart Planting Pot App",
+                    "uiux.smartpot.desc": "Interface design for an app to monitor and control smart planting pots, displaying vitals like humidity, temperature, and water levels.",
+                    "uiux.physio.title": "'Faqarati' Physical Therapy App",
+                    "uiux.physio.desc": "UX and UI design for an app connecting physical therapists with patients, featuring progress analysis and customized exercise plans.",
+                    "presentations.motorsport.title": "Saudi Motorsport Company Presentation",
+                    "presentations.motorsport.desc": "Professional presentation design showcasing the company's services, partnerships, and key performance indicators for Formula 1 events.",
+                    "presentations.transformation.title": "Corporate Transformation Journey",
+                    "presentations.transformation.desc": "A presentation illustrating the corporate transformation journey and outcomes for Al Majdiah Residence, focusing on challenges, initiatives, and achievements.",
+                    "presentations.neo.title": "NEO Platform Pitch Deck",
+                    "presentations.neo.desc": "A pitch deck for a waqf-based crowdfunding platform for research and innovation, outlining the problem, market size, and project roadmap.",
+                    "visual_identity.eid.title": "Eid Al-Fitr Campaign Visual Identity Guide",
+                    "visual_identity.eid.desc": "A complete visual identity guide for an Eid Al-Fitr campaign, including logo, colors, fonts, and visual elements inspired by traditional patterns.",
+                    "visual_identity.riyadh.title": "Riyadh Restaurants Visual Identity",
+                    "visual_identity.riyadh.desc": "Visual identity design for a promotional campaign for restaurants in Riyadh, featuring a logo and patterns inspired by Najdi heritage with modern colors.",
+                    "visual_identity.thesis.title": "'Thesis' Platform Visual Identity",
+                    "visual_identity.thesis.desc": "Development of the visual identity for the 'Thesis' platform, with a flexible logo design that adapts to the various topics covered by the platform.",
+                    "footer.name": "Fatimah Emad Eldin",
+                    "footer.rights": "All rights reserved."
+                },
+                ar: {
+                    "hero.greeting": "أهلاً، أنا <span>فاطمة عماد الدين</span>",
+                    "hero.animated.design": "تصميم جرافيك",
+                    "hero.animated.ux": "تجربة المستخدم",
+                    "hero.animated.writing": "كتابة إبداعية",
+                    "hero.portfolio": "ملف الأعمال",
+                    "hero.description": "مصممة شغوفة متخصصة في تحويل الأفكار إلى تجارب بصرية مؤثرة وجذابة، مع التركيز على التصميم الجرافيكي، تجربة المستخدم، والهويات البصرية.",
+                    "hero.cta": "تصفح أعمالي",
+                    "nav.experience": "الخبرة",
+                    "nav.education": "التعليم",
+                    "nav.skills": "المهارات",
+                    "nav.certifications": "الشهادات",
+                    "nav.awards": "الجوائز",
+                    "exp.sunaa.title": "متدربة تصميم جرافيكي في قسم التسويق الرقمي",
+                    "exp.sunaa.meta": "شركة صناع الواقع | فبراير 2025 - يونيو 2025",
+                    "exp.sunaa.d1": "تصميم ملف تعريفي متكامل للشركة.",
+                    "exp.sunaa.d2": "تطوير الهوية البصرية الكاملة لحملة عيد الفطر.",
+                    "exp.sunaa.d3": "تنفيذ الحملة الإعلامية لمعسكر 'سرّع' الرقمي.",
+                    "exp.sunaa.d4": "إعادة تصميم عرض تقديمي لمعسكر 'فوانيس' الرمضاني.",
+                    "exp.yomun.title": "رئيس وحدة الإعلام",
+                    "exp.yomun.meta": "يمُن | أغسطس 2023 - الآن",
+                    "exp.yomun.d1": "تطوير والحفاظ على إرشادات الهوية البصرية.",
+                    "exp.yomun.d2": "إجراء أبحاث السوق والتحليل التنافسي.",
+                    "exp.yomun.d3": "التعاون مع فريق التصميم لإنشاء عناصر بصرية متماسكة.",
+                    "exp.kfu.title": "مصمم جرافيك وتجربة مستخدم",
+                    "exp.kfu.meta": "نادي هواوي للطلبة المطورين - جامعة الملك فيصل | أكتوبر 2022 - أكتوبر 2023",
+                    "exp.kfu.d1": "تصميم دعوات ورش عمل ثنائية اللغة.",
+                    "exp.kfu.d2": "إنشاء تقارير انفوجرافيك سنوية شاملة.",
+                    "exp.kfu.d3": "تطوير وأتمتة نظام تصميم الشهادات.",
+                    "exp.yakeen.title": "متدربة تسويق رقمي ومصممة تجربة مستخدم",
+                    "exp.yakeen.meta": "يقين لتقنية المعلومات | فبراير 2022 - مايو 2022",
+                    "exp.yakeen.d1": "إعادة تعريف استراتيجية وخدمات التسويق.",
+                    "exp.yakeen.d2": "إعادة تصميم واجهة المستخدم وصياغة محتوى تجربة المستخدم.",
+                    "exp.mars.title": "استراتيجي محتوى، مصمم، ومترجم",
+                    "exp.mars.meta": "نادي المريخ العربي لعلوم الفضاء والفلك | يناير 2020 - يونيو 2023",
+                    "exp.mars.d1": "إنشاء وإدارة استراتيجية المحتوى مما أدى إلى نمو المتابعين بنسبة 40%.",
+                    "exp.mars.d2": "ترجمة أكثر من 50 مقالًا تقنيًا من الإنجليزية إلى العربية.",
+                    "edu.master.title": "ماجستير في هندسة البرمجيات",
+                    "edu.master.meta": "جامعة القاهرة، مصر | سبتمبر 2024 - حالي",
+                    "edu.bsc.title": "بكالوريوس في تقنية المعلومات والحوسبة (علوم الحاسب)",
+                    "edu.bsc.meta": "الجامعة العربية المفتوحة، السعودية | سبتمبر 2019 - يوليو 2023",
+                    "cert.pmp.title": "شهادة محترف إدارة المشاريع (PMP)",
+                    "cert.pmp.meta": "Google | 2024",
+                    "cert.ux.title": "شهادة جوجل الاحترافية في تصميم تجربة المستخدم",
+                    "cert.ux.meta": "Google | 2022",
+                    "cert.gd.title": "ماستركلاس التصميم الجرافيكي",
+                    "cert.gd.meta": "Udemy | 2020",
+                    "award.itc.title": "تكريم من وزير الاتصالات وتكنولوجيا المعلومات المصري",
+                    "award.itc.meta": "لتحقيقي هدف المبادرة في العمل المهني الحر  DEPI | 2024",
+                    "award.aou.title": "تكريم من الجامعة العربية المفتوحة",
+                    "award.aou.meta": "في حفل قصص نجاح الخريجين | 2024",
+                    "award.misraj.title": "المركز الأول في هاكاثون التعليم العالي من مصراج تك",
+                    "award.misraj.meta": "جائزة بقيمة 2500 دولار | 2024",
+                    "portfolio.name": "المشاريع",
+                    "portfolio.tagline": "تصميم جرافيك | تجربة مستخدم | هويات بصرية",
+                    "nav.infographics": "انفوجرافيك",
+                    "nav.invitations": "دعوات",
+                    "nav.ui_ux": "واجهات وتجربة مستخدم",
+                    "nav.presentations": "عروض تقديمية",
+                    "nav.visual_identity": "هويات بصرية",
+                    "infographics.huawei.title": "حصاد نادي هواوي للمطورين",
+                    "infographics.huawei.desc": "انفوجرافيك يلخص إنجازات وأرقام نادي هواوي للطلبة المطورين في جامعة الملك فيصل، مسلطًا الضوء على النمو والفعاليات والتفاعل المجتمعي.",
+                    "infographics.oil.title": "رحلة قطرة نفط",
+                    "infographics.oil.desc": "تصميم بصري يروي قصة النفط من التكوين الجيولوجي إلى مراحل الاستكشاف والإنتاج، مع التركيز على تاريخه في المملكة العربية السعودية.",
+                    "infographics.axiom.title": "مهمة الفضاء السعودية Ax-2",
+                    "infographics.axiom.desc": "انفوجرافيك يوضح تفاصيل المهمة الفضائية السعودية الأولى إلى محطة الفضاء الدولية، بما في ذلك الطاقم، الأهداف، وتفاصيل الإطلاق.",
+                     "infographics.solstice.title": "الانقلاب الصيفي",
+                    "infographics.solstice.desc": "تصميم مبسط يشرح ظاهرة الانقلاب الصيفي، أسبابها، وتأثيرها على طول النهار، مقدم من نادي الفلك العربي.",
+                    "invitations.aou.title": "دعوات فعاليات الجامعة العربية المفتوحة",
+                    "invitations.aou.desc": "مجموعة من تصاميم الدعوات لورش عمل وفعاليات متنوعة في الجامعة العربية المفتوحة، مثل 'طريق نحو البرمجة' و 'أساسيات العود'.",
+                    "invitations.hsd.title": "ورشة عمل تطوير تطبيقات أندرويد",
+                    "invitations.hsd.desc": "تصميم دعوة لورشة عمل متخصصة في تطوير تطبيقات أندرويد باستخدام Kotlin، مقدمة من نادي هواوي للطلبة المطورين.",
+                    "invitations.content.title": "ملتقى صناعة المحتوى",
+                    "invitations.content.desc": "تصاميم إعلانية لملتقى صناعة المحتوى الذي يستضيف صناع محتوى بارزين في مجالات التصوير والكتابة الإبداعية.",
+                    "uiux.vision2030.title": "واجهة موقع مشاريع رؤية 2030",
+                    "uiux.vision2030.desc": "تصميم واجهة مستخدم لموقع إلكتروني يعرض مشاريع رؤية المملكة 2030، مع التركيز على هوية اليوم الوطني وسهولة التصفح.",
+                    "uiux.smartpot.title": "تطبيق الحوض الذكي للزراعة",
+                    "uiux.smartpot.desc": "تصميم واجهة تطبيق لمراقبة والتحكم في أحواض الزراعة الذكية، يعرض مؤشرات حيوية مثل الرطوبة والحرارة وكمية المياه.",
+                    "uiux.physio.title": "تطبيق 'فقراتي' للعلاج الطبيعي",
+                    "uiux.physio.desc": "تصميم تجربة مستخدم وواجهة لتطبيق يربط بين أخصائيي العلاج الطبيعي والمرضى، مع ميزات لتحليل التقدم وتخصيص التمارين.",
+                    "presentations.motorsport.title": "عرض تقديمي لشركة رياضة السيارات السعودية",
+                    "presentations.motorsport.desc": "تصميم عرض تقديمي احترافي يعرض خدمات الشركة، الشراكات، ومؤشرات الأداء الرئيسية لفعاليات الفورمولا 1.",
+                    "presentations.transformation.title": "رحلة التحول المؤسسي",
+                    "presentations.transformation.desc": "تصميم عرض يوضح رحلة ومخرجات التحول المؤسسي لشركة الماجدية ريزدنس، مع التركيز على التحديات والمبادرات والإنجازات.",
+                    "presentations.neo.title": "عرض تقديمي لمنصة NEO",
+                    "presentations.neo.desc": "Pitch Deck لمنصة تمويل جماعي وقفي للبحث والابتكار، يوضح المشكلة، حجم السوق، وخارطة طريق المشروع.",
+                    "visual_identity.eid.title": "دليل الهوية البصرية لحملة عيد الفطر",
+                    "visual_identity.eid.desc": "دليل متكامل للهوية البصرية لحملة عيد الفطر، يشمل الشعار، الألوان، الخطوط، والعناصر البصرية المستوحاة من النقوش التراثية.",
+                    "visual_identity.riyadh.title": "هوية بصرية لمطاعم الرياض",
+                    "visual_identity.riyadh.desc": "تصميم هوية بصرية لحملة ترويجية لمطاعم في الرياض، تتضمن شعارًا وأنماطًا مستوحاة من التراث النجدي بألوان عصرية.",
+                    "visual_identity.thesis.title": "هوية بصرية لمنصة 'أطروحة'",
+                    "visual_identity.thesis.desc": "تطوير الهوية البصرية لمنصة 'أطروحة'، مع تصميم شعار مرن يتناسب مع مختلف المواضيع التي تغطيها المنصة.",
+                    "footer.name": "فاطمة عماد الدين",
+                    "footer.rights": "جميع الحقوق محفوظة."
+                }
+            };
+            
+            const langToggle = document.getElementById('lang-toggle');
+            let currentLang = localStorage.getItem('lang') || 'ar';
+
+            const translatePage = () => {
+                const lang = document.body.getAttribute('data-lang');
+                document.querySelectorAll('[data-translate-key]').forEach(el => {
+                    const key = el.getAttribute('data-translate-key');
+                    const translation = translations[lang][key];
+                    if (translation) {
+                         if (el.children.length > 0 && el.children[0].tagName === 'SPAN') {
+                            const spanHTML = el.children[0].outerHTML;
+                            el.innerHTML = translation.replace(/<span>.*<\/span>/, spanHTML);
+                        } else {
+                            el.innerHTML = translation;
+                        }
+                    }
+                });
+                document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.lang = lang;
+            };
+
+            if (langToggle) {
+                langToggle.addEventListener('click', () => {
+                    currentLang = currentLang === 'en' ? 'ar' : 'en';
+                    localStorage.setItem('lang', currentLang);
+                    document.body.setAttribute('data-lang', currentLang);
+                    translatePage();
+                });
+            }
+
+            // --- THEME TOGGLE LOGIC ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const moonIcon = document.getElementById('theme-icon-moon');
+            let currentTheme = localStorage.getItem('theme') || 'dark';
+
+            const applyTheme = (theme) => {
+                document.documentElement.setAttribute('data-theme', theme);
+                if (theme === 'dark') {
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                } else {
+                    moonIcon.classList.add('hidden');
+                    sunIcon.classList.remove('hidden');
+                }
+            };
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    localStorage.setItem('theme', currentTheme);
+                    applyTheme(currentTheme);
+                });
+            }
+            
+            // --- FOOTER YEAR ---
+            const footerYear = document.getElementById('footer-year');
+            if(footerYear) {
+                footerYear.textContent = new Date().getFullYear();
+            }
+
+            // --- ABOUT TABS LOGIC ---
+            const aboutTabLinks = document.querySelectorAll('.about-tab');
+            const aboutTabContents = document.querySelectorAll('.about-content');
+            aboutTabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    aboutTabLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    aboutTabContents.forEach(c => {
+                        c.classList.toggle('active', c.id === tabId);
+                    });
+                });
+            });
+
+
+            // --- PORTFOLIO TABS LOGIC ---
+            const mainTabLinks = document.querySelectorAll('.btn-container .tab-link');
+            const mainTabContents = document.querySelectorAll('#portfolio .tab-content');
+
+            mainTabLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+
+                    mainTabLinks.forEach(innerLink => innerLink.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    mainTabContents.forEach(content => {
+                        content.classList.toggle('active-content', content.id === tabId);
+                    });
+                });
+            });
+
+            // --- LIGHTBOX LOGIC ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightbox-content');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const projectImageLinks = document.querySelectorAll('.project-image-link');
+
+            projectImageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const imageUrl = this.getAttribute('href');
+                    lightboxContent.setAttribute('src', imageUrl);
+                    lightbox.classList.add('active');
+                });
+            });
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('active');
+                lightboxContent.setAttribute('src', '');
+            };
+
+            if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+            if(lightbox) lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Initial setup on page load
+            document.body.setAttribute('data-lang', currentLang);
+            applyTheme(currentTheme);
+            translatePage();
+        });
+    </script>
+</body>
+</html>
